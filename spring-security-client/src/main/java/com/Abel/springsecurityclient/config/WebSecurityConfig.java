@@ -14,7 +14,9 @@ import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 @EnableWebSecurity
 public class WebSecurityConfig {
     private static final String[]WHITE_LIST_URLS={
-            "/register"
+            "/register",
+            "/resendVerifyToken*",
+            "/verifyRegistration*"
     };
     @Bean
     public PasswordEncoder passwordEncoder(){
@@ -31,8 +33,6 @@ public class WebSecurityConfig {
                 .requestMatchers(WHITE_LIST_URLS).permitAll();
 
         return http.build();
-
-
    }
 
 }
